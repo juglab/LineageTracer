@@ -43,7 +43,7 @@ Look in the `examples` directory,  and try out the `Fluo-N2DH-GOWT1` notebooks f
 
 ### Datasets
 
-Datasets are available as release assets **[here](https://github.com/juglab/LineageTracer/releases/tag/v0.1.0)**. 
+Datasets are available as release assets **[here](https://github.com/juglab/LineageTracer/releases/tag/v0.1.0-tag)**. 
 
 ### Training and Inference on your data
 
