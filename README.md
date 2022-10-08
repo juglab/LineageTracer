@@ -72,8 +72,6 @@ $data_dir
             └───...
 ```
 
-=======
-
 ### Issues
 
 If you encounter any problems, please **[file an issue]** along with a detailed description.
