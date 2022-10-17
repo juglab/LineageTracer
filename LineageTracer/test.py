@@ -225,37 +225,37 @@ def compute_tracklets(test_configs):
             new_id_ts_te_map[id_counter] = np.array([t, t + 1])
             id_counter += 1
 
-      # then we identify the ones where there is an iou overlap
+#       #then we identify the ones where there is an iou overlap
 
 
-      processed_start_copy = processed_start.copy()
-      processed_end_copy = processed_end.copy()
-      for i in processed_start_copy:
-        for j in processed_end_copy:
-          intersection = ((im_t == i) & (im_tp1 == j)).sum()
-          if intersection > 0:
-            if i in processed_start:
-              processed_start.remove(i)
-            if j in processed_end:
-              processed_end.remove(j)
-            if str(t) + '_' + str(i) in old_id_new_id_map.keys():
-              # also check if tp1, j is already assigned by chance?
-              if str(t + 1) + '_' + str(j) in old_id_new_id_map.keys(): # edge case
-                pass
-              else:
-                old_id_new_id_map[str(t + 1) + '_' + str(j)] = old_id_new_id_map[
-                str(t) + '_' + str(i)]
-                new_id_ts_te_map[old_id_new_id_map[str(t) + '_' + str(i)]][1] = t + 1
-            else:
-              if str(t + 1) + '_' + str(j) in old_id_new_id_map.keys(): # edge case
-                old_id_new_id_map[str(t) + '_' + str(i)] = id_counter
-                new_id_ts_te_map[id_counter] = np.array([t, t])
-                id_counter+=1
-              else:
-                old_id_new_id_map[str(t) + '_' + str(i)] = id_counter
-                old_id_new_id_map[str(t + 1) + '_' + str(j)] = id_counter
-                new_id_ts_te_map[id_counter] = np.array([t, t + 1])
-                id_counter += 1
+#       processed_start_copy = processed_start.copy()
+#       processed_end_copy = processed_end.copy()
+#       for i in processed_start_copy:
+#         for j in processed_end_copy:
+#           intersection = ((im_t == i) & (im_tp1 == j)).sum()
+#           if intersection > 0:
+#             if i in processed_start:
+#               processed_start.remove(i)
+#             if j in processed_end:
+#               processed_end.remove(j)
+#             if str(t) + '_' + str(i) in old_id_new_id_map.keys():
+#               # also check if tp1, j is already assigned by chance?
+#               if str(t + 1) + '_' + str(j) in old_id_new_id_map.keys(): # edge case
+#                 pass
+#               else:
+#                 old_id_new_id_map[str(t + 1) + '_' + str(j)] = old_id_new_id_map[
+#                 str(t) + '_' + str(i)]
+#                 new_id_ts_te_map[old_id_new_id_map[str(t) + '_' + str(i)]][1] = t + 1
+#             else:
+#               if str(t + 1) + '_' + str(j) in old_id_new_id_map.keys(): # edge case
+#                 old_id_new_id_map[str(t) + '_' + str(i)] = id_counter
+#                 new_id_ts_te_map[id_counter] = np.array([t, t])
+#                 id_counter+=1
+#               else:
+#                 old_id_new_id_map[str(t) + '_' + str(i)] = id_counter
+#                 old_id_new_id_map[str(t + 1) + '_' + str(j)] = id_counter
+#                 new_id_ts_te_map[id_counter] = np.array([t, t + 1])
+#                 id_counter += 1
 
 
       # else we just leave the confusing lot and hope they are fixed in the next ILP step!
